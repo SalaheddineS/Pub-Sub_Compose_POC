@@ -16,5 +16,5 @@ public class Shelf {
     @Id
     @GeneratedValue
     private int Id;
-    private String Name;
+    private String name;
 }

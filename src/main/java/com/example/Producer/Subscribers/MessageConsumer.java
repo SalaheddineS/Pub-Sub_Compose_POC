@@ -11,11 +11,8 @@ public class MessageConsumer {
     @Autowired
     ShelfRepository shelfRepository;
     @KafkaListener(topics = "my-topic", groupId = "consumer-id")
-    public void listen(String message) {
-        System.out.println("Received message: " + message);
-        Shelf shelf = Shelf.builder()
-                .Name(message)
-                .build();
+    public void listen(Shelf shelf) {
+        System.out.println("Received object: " + shelf.getName());
         shelfRepository.save(shelf);
         for (Shelf s : shelfRepository.findAll()) {
             System.out.println(s.getName());

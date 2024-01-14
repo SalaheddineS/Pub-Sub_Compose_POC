@@ -1,5 +1,6 @@
 package com.example.Producer.Producers;
 
+import com.example.Producer.POCEntity.Shelf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
@@ -8,10 +9,10 @@ import org.springframework.stereotype.Component;
 public class MessageProducer {
 
     @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private KafkaTemplate<String, Shelf> kafkaTemplate;
 
-    public void sendMessage(String topic, String message) {
-        kafkaTemplate.send(topic, message);
+    public void sendMessage(String topic, Shelf shelf) {
+        kafkaTemplate.send(topic, shelf);
     }
 
 }
